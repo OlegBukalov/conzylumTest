@@ -2,6 +2,7 @@
   <div *ngIf="auth.isAuthenticated()" class="user-menu">
     <div class="user-link">
       <mat-icon>person</mat-icon>
+      <span *ngIf="auth.userName$ | async as userName">{{ userName }}</span>
     </div>
     <a routerLink="/login" (click)="auth.logout()">
       <div class="user-link">

@@ -12,6 +12,9 @@
       <mat-label>Password</mat-label>
       <input matInput type="password" placeholder="Enter password:" formControlName="password">
     </mat-form-field>
+    <mat-form-field class="full-width" *ngIf="isError">
+      <input matInput type="text" [value]="errorMessage" disabled>
+    </mat-form-field>
     <button
         mat-raised-button color="primary"
         [disabled]="isSubmitted"

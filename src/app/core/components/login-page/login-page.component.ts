@@ -12,6 +12,8 @@ import {User} from "../../models/user.model";
 export class LoginPageComponent implements OnInit {
   form: FormGroup;
   isSubmitted = false;
+  isError = false;
+  errorMessage = '';
 
   constructor(
     private fb: FormBuilder,
@@ -30,11 +32,20 @@ export class LoginPageComponent implements OnInit {
     this.isSubmitted = true;
     const user: User = this.form.getRawValue();
 
-    this.auth.login(user).subscribe(() => {
-      this.form.reset();
-      this.router.navigate(['/products']);
-      this.isSubmitted = false;
-    })
+    this.auth.login(user).subscribe(
+      (res) => {
+        this.isError = false;
+        this.form.reset();
+        this.auth.userName$.next(res.firstName);
+        this.router.navigate(['/products']);
+        this.isSubmitted = false;
+      },
+      (error) => {
+        this.isSubmitted = false;
+        this.isError = true;
+        this.errorMessage = error.error.message;
+      }
+    )
   }
 
   private initForm() {
