@@ -1,2 +1,13 @@
 <mat-toolbar color="primary">
+  <div *ngIf="auth.isAuthenticated()" class="user-menu">
+    <div class="user-link">
+      <mat-icon>person</mat-icon>
+    </div>
+    <a routerLink="/login" (click)="auth.logout()">
+      <div class="user-link">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Log out</span>
+      </div>
+    </a>
+  </div>
 </mat-toolbar>

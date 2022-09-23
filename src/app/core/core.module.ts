@@ -1,10 +1,11 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+
+import {SharedModule} from "../shared/shared.module";
 import {HeaderComponent} from "./components/header/header.component";
 import {LoginPageComponent} from "./components/login-page/login-page.component";
 import {NotFoundPageComponent} from "./components/not-found-page/not-found-page.component";
-import {MaterialModule} from "../material/material.module";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {RouterModule} from "@angular/router";
 
 const components = [
   HeaderComponent,
@@ -18,9 +19,8 @@ const components = [
   ],
   imports: [
     CommonModule,
-    MaterialModule,
-    FormsModule,
-    ReactiveFormsModule
+    SharedModule,
+    RouterModule
   ],
   exports: [
     components

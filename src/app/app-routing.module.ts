@@ -5,8 +5,8 @@ import {LoginPageComponent} from "./core/components/login-page/login-page.compon
 import {NotFoundPageComponent} from "./core/components/not-found-page/not-found-page.component";
 
 const routes: Routes = [
-  // {path: '', redirectTo: 'products', pathMatch: 'full'},
-  // {path: 'products', component: ProductListComponent},
+  {path: '', redirectTo: 'products', pathMatch: 'full'},
+  {path: 'products', component: ProductListComponent},
   {path: 'login', component: LoginPageComponent},
   {path: '**', component: NotFoundPageComponent}
 ];

@@ -1,0 +1,18 @@
+.mat-toolbar {
+  justify-content: space-between;
+}
+
+.user-menu {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.user-link {
+  display: flex;
+  padding-left: 15px;
+  align-items: center;
+  font-size: 16px;
+  font-weight: normal;
+  color: white;
+}
