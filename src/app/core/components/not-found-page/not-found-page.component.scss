@@ -1,0 +1,29 @@
+.nfp-card {
+  max-width: 400px;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+.mat-card {
+  box-shadow: none;
+  text-align: center;
+}
+
+.mat-card-header {
+  justify-content: center;
+}
+
+.mat-card-title {
+  padding-bottom: 12px;
+  font-size: 32px;
+  color: red;
+}
+
+.mat-card-subtitle {
+  font-size: 32px;
+}
+
+.mat-card-image {
+  width: 50%;
+  margin: 0 auto;
+}
