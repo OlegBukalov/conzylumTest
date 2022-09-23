@@ -7,8 +7,6 @@ import {AuthResponse} from "../models/user.model";
   providedIn: 'root'
 })
 export class AuthService {
-  userName: string | undefined;
-
   get token(): string | null {
     return localStorage.getItem('test-token');
   }
@@ -36,8 +34,6 @@ export class AuthService {
   private setToken(response: AuthResponse | null) {
     if (response) {
       localStorage.setItem('test-token', response.token)
-      this.userName = response.username;
-      console.log(this.userName)
     } else {
       localStorage.clear();
     }
