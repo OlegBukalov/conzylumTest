@@ -11,6 +11,7 @@ import {User} from "../../models/user.model";
 })
 export class LoginPageComponent implements OnInit {
   form: FormGroup;
+  isSubmitted = false;
 
   constructor(
     private fb: FormBuilder,
@@ -23,15 +24,16 @@ export class LoginPageComponent implements OnInit {
   }
 
   onLogin() {
-    if (this.form.invalid) {
+    if (this.form.invalid || this.isSubmitted) {
       return;
     }
-
+    this.isSubmitted = true;
     const user: User = this.form.getRawValue();
 
     this.auth.login(user).subscribe(() => {
       this.form.reset();
       this.router.navigate(['/products']);
+      this.isSubmitted = false;
     })
   }
 

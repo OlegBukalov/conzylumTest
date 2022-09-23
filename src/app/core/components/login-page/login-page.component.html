@@ -12,6 +12,10 @@
       <mat-label>Password</mat-label>
       <input matInput type="password" placeholder="Enter password:" formControlName="password">
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="onLogin()">Login</button>
+    <button
+        mat-raised-button color="primary"
+        [disabled]="isSubmitted"
+        (click)="onLogin()"
+    >Login</button>
   </mat-card>
 </form>
