@@ -1,8 +1,4 @@
-<div>
-  Products
-  <div *ngFor="let product of products$ | async">
-    <span>
-      {{product.id}}
-    </span>
-  </div>
-</div>
+<app-product-item
+    *ngFor="let product of products$ | async"
+    [product]="product"
+></app-product-item>
