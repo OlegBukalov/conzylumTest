@@ -4,6 +4,7 @@ import {ProductListComponent} from "./product-list/product-list.component";
 import {ProductItemComponent} from "./product-list/product-item/product-item.component";
 import {RouterModule, Routes} from "@angular/router";
 import {SharedModule} from "../shared/shared.module";
+import {ProductDetailComponent} from './product-list/product-detail/product-detail.component';
 
 const components = [
   ProductListComponent,
@@ -11,12 +12,13 @@ const components = [
 ]
 
 const routes: Routes = [
-  {path: '', component: ProductListComponent}
+  {path: '', component: ProductListComponent},
 ]
 
 @NgModule({
   declarations: [
-    components
+    components,
+    ProductDetailComponent
   ],
   imports: [
     CommonModule,

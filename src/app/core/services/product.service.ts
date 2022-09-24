@@ -26,4 +26,12 @@ export class ProductService {
         map((resp: ProductResponse) => resp.products)
       )
   }
+
+  getProductById(id: number): Observable<Product> {
+    return this.http.get<Product>(`${environment.serverUrl}/products/${id}`, {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.auth.token}`
+      })
+    })
+  }
 }
