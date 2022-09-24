@@ -1,1 +1,18 @@
-<p>product-detail works!</p>
+<mat-card class="card-detail">
+  <mat-card-title-group *ngIf="!isError">
+    <mat-card-title>{{product?.title}}</mat-card-title>
+    <mat-card-subtitle>{{product?.brand}}</mat-card-subtitle>
+    <mat-card-subtitle class="card-subtitle">Price: {{product?.price | currency}}</mat-card-subtitle>
+    <mat-card-subtitle class="card-subtitle">Discount: {{product?.discountPercentage | percent}}</mat-card-subtitle>
+    <mat-card-subtitle class="card-subtitle">Rating: {{product?.rating}}</mat-card-subtitle>
+    <mat-card-subtitle class="card-subtitle">Stock: {{product?.stock}}</mat-card-subtitle>
+    <img [src]="product?.thumbnail" [alt]="product?.title">
+  </mat-card-title-group>
+  <mat-card-content  *ngIf="!isError">
+    {{product?.description}}
+  </mat-card-content>
+  <H2 *ngIf="isError">{{errorMessage}}</H2>
+  <mat-card-actions>
+    <button mat-button (click)="onBack()">Back</button>
+  </mat-card-actions>
+</mat-card>
