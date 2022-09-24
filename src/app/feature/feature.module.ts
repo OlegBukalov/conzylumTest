@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {ProductListComponent} from "./product-list/product-list.component";
 import {ProductItemComponent} from "./product-list/product-item/product-item.component";
 import {RouterModule, Routes} from "@angular/router";
+import {SharedModule} from "../shared/shared.module";
 
 const components = [
   ProductListComponent,
@@ -19,7 +20,8 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SharedModule,
   ],
   exports: [
     RouterModule

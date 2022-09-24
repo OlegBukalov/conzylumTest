@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {BehaviorSubject, catchError, Observable, Subject, tap, throwError} from "rxjs";
-import {AuthResponse} from "../models/user.model";
+import {HttpClient} from "@angular/common/http";
+import {BehaviorSubject, Observable, tap} from "rxjs";
+import {AuthResponse, User} from "../models/user.model";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,8 @@ export class AuthService {
     return localStorage.getItem('test-token');
   }
 
-  login(user: any): Observable<any> {
-    return this.http.post<AuthResponse>('https://dummyjson.com/auth/login', user)
+  login(user: User): Observable<any> {
+    return this.http.post<AuthResponse>(`${environment.serverUrl}/login`, user)
       .pipe(
         tap(this.setToken)
       );
