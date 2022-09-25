@@ -1,4 +1,4 @@
-<mat-card class="card-detail">
+<mat-card class="card-detail" *ngIf="isLoadingCompleted; else loading">
   <mat-card-title-group *ngIf="!isError">
     <mat-card-title>{{product?.title}}</mat-card-title>
     <mat-card-subtitle>{{product?.brand}}</mat-card-subtitle>
@@ -16,3 +16,6 @@
     <button mat-button (click)="onBack()">Back</button>
   </mat-card-actions>
 </mat-card>
+<ng-template #loading>
+  <mat-spinner class="spinner"></mat-spinner>
+</ng-template>

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../../core/services/product.service";
-import {Observable} from "rxjs";
 import {Product} from "../../core/models/product.model";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-product-list',
@@ -9,7 +9,9 @@ import {Product} from "../../core/models/product.model";
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
-  products$: Observable<Product[]>
+  products: Product[] = [];
+  isLoadingCompleted = true;
+  subscription: Subscription;
 
   constructor(private productService: ProductService) {
   }
@@ -19,6 +21,15 @@ export class ProductListComponent implements OnInit {
   }
 
   private initProducts() {
-    this.products$ = this.productService.getAllProducts();
+    this.isLoadingCompleted = false;
+    this.subscription = this.productService.getAllProducts().subscribe(
+      products => {
+        this.products = products;
+        this.isLoadingCompleted = true;
+      },
+      () => {
+        this.isLoadingCompleted = true;
+      }
+    );
   }
 }

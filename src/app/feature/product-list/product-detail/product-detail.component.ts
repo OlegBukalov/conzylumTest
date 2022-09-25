@@ -15,6 +15,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   isError = false;
   errorMessage = '';
+  isLoadingCompleted = true;
 
   constructor(
     private productService: ProductService,
@@ -33,14 +34,17 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
   private getProductById() {
     const id = this.route.snapshot.params['id'];
+    this.isLoadingCompleted = false;
     this.subscription = this.productService.getProductById(id).subscribe(
       product => {
         this.product = product;
         this.isError = false;
+        this.isLoadingCompleted = true;
       },
       error => {
         this.isError = true;
         this.errorMessage = error.error.message;
+        this.isLoadingCompleted = true;
       }
     );
   }

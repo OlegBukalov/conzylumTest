@@ -1,5 +1,6 @@
 <form
     class="login-card"
+    *ngIf="isLoadingCompleted; else loading"
     [formGroup]="form"
 >
   <mat-card >
@@ -22,3 +23,6 @@
     >Login</button>
   </mat-card>
 </form>
+<ng-template #loading>
+  <mat-spinner class="spinner"></mat-spinner>
+</ng-template>
