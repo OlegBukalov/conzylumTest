@@ -13,6 +13,7 @@ const components = [
 
 const routes: Routes = [
   {path: '', component: ProductListComponent},
+  {path: ':id', component: ProductDetailComponent},
 ]
 
 @NgModule({
