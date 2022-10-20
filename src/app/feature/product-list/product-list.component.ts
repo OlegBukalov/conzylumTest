@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ProductService} from "../../core/services/product.service";
 import {Product} from "../../core/models/product.model";
 import {Subscription} from "rxjs";
@@ -8,19 +8,23 @@ import {Subscription} from "rxjs";
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements OnInit {
-  products: Product[] = [];
-  isLoadingCompleted = true;
-  subscription: Subscription;
+export class ProductListComponent implements OnInit, OnDestroy {
+  public products: Product[] = [];
+  public isLoadingCompleted = true;
+  private subscription: Subscription;
 
   constructor(private productService: ProductService) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.initProducts();
   }
 
-  private initProducts() {
+  public ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  private initProducts(): void {
     this.isLoadingCompleted = false;
     this.subscription = this.productService.getAllProducts().subscribe(
       products => {

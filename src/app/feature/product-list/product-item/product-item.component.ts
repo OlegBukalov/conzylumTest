@@ -15,7 +15,7 @@ export class ProductItemComponent {
   ) {
   }
 
-  onOpenDetails() {
+  public onOpenDetails(): void {
     this.router.navigate(['/products', this.product.id]);
   }
 }

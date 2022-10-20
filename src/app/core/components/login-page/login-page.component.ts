@@ -11,12 +11,12 @@ import {Subscription} from "rxjs";
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit, OnDestroy {
-  form: FormGroup;
-  isSubmitted = false;
-  isError = false;
-  errorMessage = '';
-  isLoadingCompleted = true;
-  subscription: Subscription;
+  public form: FormGroup;
+  public isSubmitted = false;
+  public isError = false;
+  public errorMessage = '';
+  public isLoadingCompleted = true;
+  private subscription: Subscription;
 
   constructor(
     private fb: FormBuilder,
@@ -24,15 +24,15 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     private router: Router
   ) { }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.initForm();
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
-  onLogin() {
+  public onLogin(): void {
     if (this.form.invalid || this.isSubmitted) {
       return;
     }
@@ -58,7 +58,7 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     )
   }
 
-  private initForm() {
+  private initForm(): void {
     this.form = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],

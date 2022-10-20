@@ -11,11 +11,11 @@ import {Product} from "../../../core/models/product.model";
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
 
-  product: Product;
-  subscription: Subscription;
-  isError = false;
-  errorMessage = '';
-  isLoadingCompleted = true;
+  public product: Product;
+  public isError = false;
+  public errorMessage = '';
+  public isLoadingCompleted = true;
+  private subscription: Subscription;
 
   constructor(
     private productService: ProductService,
@@ -24,15 +24,19 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   ) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.getProductById();
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
-  private getProductById() {
+  public onBack(): void {
+    this.router.navigate(['/products']);
+  }
+
+  private getProductById(): void {
     const id = this.route.snapshot.params['id'];
     this.isLoadingCompleted = false;
     this.subscription = this.productService.getProductById(id).subscribe(
@@ -47,9 +51,5 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
         this.isLoadingCompleted = true;
       }
     );
-  }
-
-  onBack() {
-    this.router.navigate(['/products']);
   }
 }

@@ -9,7 +9,7 @@ import {environment} from "../../../environments/environment";
 })
 export class AuthService {
 
-  userName$: BehaviorSubject<string> = new BehaviorSubject<string>('')
+  public userName$: BehaviorSubject<string> = new BehaviorSubject<string>('')
 
   constructor(
     private http: HttpClient
@@ -20,22 +20,22 @@ export class AuthService {
     return localStorage.getItem('test-token');
   }
 
-  login(user: User): Observable<any> {
+  public login(user: User): Observable<any> {
     return this.http.post<AuthResponse>(`${environment.serverUrl}/login`, user)
       .pipe(
         tap(this.setToken)
       );
   }
 
-  logout() {
+  public logout(): void {
     this.setToken(null);
   }
 
-  isAuthenticated(): boolean {
+  public isAuthenticated(): boolean {
     return !!this.token;
   }
 
-  private setToken(response: AuthResponse | null) {
+  private setToken(response: AuthResponse | null): void {
     if (response) {
       localStorage.setItem('test-token', response.token);
     } else {

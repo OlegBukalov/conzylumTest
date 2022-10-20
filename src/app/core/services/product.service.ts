@@ -16,7 +16,7 @@ export class ProductService {
   ) {
   }
 
-  getAllProducts(): Observable<Product[]> {
+  public getAllProducts(): Observable<Product[]> {
     return this.http.get<ProductResponse>(`${environment.serverUrl}/products`, {
       headers: new HttpHeaders({
         'Authorization': `Bearer ${this.auth.token}`
@@ -27,7 +27,7 @@ export class ProductService {
       )
   }
 
-  getProductById(id: number): Observable<Product> {
+  public getProductById(id: number): Observable<Product> {
     return this.http.get<Product>(`${environment.serverUrl}/products/${id}`, {
       headers: new HttpHeaders({
         'Authorization': `Bearer ${this.auth.token}`
