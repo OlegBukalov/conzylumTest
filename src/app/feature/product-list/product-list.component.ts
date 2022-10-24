@@ -24,6 +24,10 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  public productById(index: number, product: Product): number {
+    return product.id;
+  }
+
   private initProducts(): void {
     this.isLoadingCompleted = false;
     this.subscription = this.productService.getAllProducts().subscribe(

@@ -1,6 +1,6 @@
 <div class="container" *ngIf="isLoadingCompleted; else loading">
   <app-product-item
-      *ngFor="let product of products"
+      *ngFor="let product of products; trackBy:productById"
       [product]="product"
   ></app-product-item>
 </div>
